@@ -82,7 +82,7 @@ const server = http.createServer((req, res) => {
   if(req.method == "GET"){
     //Aplicamos la mejora /ls pedida en la practica
     if(url.pathname != '/ls'){
-        if(url.pathname == '/'){ url.pathname = "principal/index.html"}
+        if(url.pathname == '/'){ url.pathname = "/principal/index.html"}
         fs.readFile(url.pathname.slice(1,), (err, data) => {if(!err){OK(res,data)}else{NOT_OK(res)}});
     }else{
         OK(res,DIRECTORY)
