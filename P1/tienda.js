@@ -42,6 +42,21 @@ function OK(res,data){
     console.log("   200 OK")
 
 }
+
+//Ahora hacemos el de 404 ERROR
+function NOT_OK(res){
+  //-- Generar respuesta
+  //-- Código: Error. No encontrado
+  res.statusCode = 404;
+  res.statusMessage = "Not Found";
+  res.setHeader('Content-Type', 'text/plain');
+  fs.readFile('error.html', (err,data) => { if(!err){   //Con este codigo cargamos el fichero html de error creado.
+    res.write(data);
+    res.end()
+    console.log("  ERROR 404 NOT FOUND...")
+  }});
+
+}
 //-- SERVIDOR: Bucle principal de atención a clientes
 const server = http.createServer((req, res) => {
 
