@@ -32,6 +32,16 @@ function print_info_req(req) {
     return myURL
 }
 
+//Ahora creamos la funcion para el 200 Ok
+function OK(res,data){
+    res.statusCode = 200;
+    res.statusMessage = "OK";
+    res.setHeader('Content-Type', 'text/plain');
+    res.write(data);
+    res.end()
+    console.log("   200 OK")
+
+}
 //-- SERVIDOR: Bucle principal de atención a clientes
 const server = http.createServer((req, res) => {
 
