@@ -3,6 +3,7 @@
 //Modules
 const fs = require('fs');
 const http = require('http');
+const { arch } = require('os');
 
 const PUERTO = 9090;
 const DIRECTORY = returnFiles("./" , "-")
@@ -56,6 +57,21 @@ function NOT_OK(res){
     console.log("  ERROR 404 NOT FOUND...")
   }});
 
+}
+
+//Funcion para devolver archivos
+function returnFiles(dir,space){
+    let sendText = ""
+    const archivos = fs.readdirSync(dir);
+    for(let i = 0; i < archivos.length; i++) {
+        if(archivos[i].split(".").length > 1){
+            sendText += "<p> " + space + " " + archivos[i] + "</p>";
+        }else{
+            sendText += "<p> " + space + " " + archivos[i] + "</p>";
+            sendText += returnFiles(dir + "/" + archivos[i], space + "---")
+        }
+    }
+    return sendText
 }
 //-- SERVIDOR: Bucle principal de atención a clientes
 const server = http.createServer((req, res) => {
