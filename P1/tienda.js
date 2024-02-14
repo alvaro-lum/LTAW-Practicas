@@ -3,7 +3,6 @@
 //Modules
 const fs = require('fs');
 const http = require('http');
-const { arch } = require('os');
 
 const PUERTO = 9090;
 const DIRECTORY = returnFiles("./" , "-")
