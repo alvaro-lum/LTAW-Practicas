@@ -28,6 +28,8 @@ function print_info_req(req) {
     const myURL = new URL(req.url, 'http://' + req.headers['host']);
     console.log("URL completa: " + myURL.href);
     console.log("  Ruta: " + myURL.pathname);
+
+    return myURL
 }
 
 //-- SERVIDOR: Bucle principal de atención a clientes
@@ -35,21 +37,18 @@ const server = http.createServer((req, res) => {
 
   //-- Petición recibida
   //-- Imprimir información de la petición
-  print_info_req(req);
-
-  //-- Si hay datos en el cuerpo, se imprimen
-  req.on('data', (cuerpo) => {
-
-    //-- Los datos del cuerpo son caracteres
-    req.setEncoding('utf8');
-
-    console.log("Cuerpo: ")
-    console.log(` * Tamaño: ${cuerpo.length} bytes`);
-    console.log(` * Contenido: ${cuerpo}`);
-  });
-
+  url = print_info_req(req);
+  if(req.method == "GET"){
+    //Aplicamos la mejora /ls pedida en la practica
+    if(url.pathname != '/ls'){
+        if(url.pathname == '/'){ url.pathname = "index.html"}
+        fs.readFile(url.pathname.slice(1,), (err, data) => {if(!err){OK(res,data)}else{NOT_OK(res)}});
+    }else{
+        OK(res,DIRECTORY)
+    }
+  }
 });
 
-server.listen(PUERTO);
 
+server.listen(PUERTO);
 console.log("Servidor activado. Escuchando en: " + PUERTO);
