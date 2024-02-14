@@ -1,2 +1,2 @@
  # Práctica 1
- Hola prueba casa 2.0
+ La practica consiste en crear una web como si fuera una tienda. En mi caso será de gafas de VR.
