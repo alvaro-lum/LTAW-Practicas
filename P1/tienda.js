@@ -36,7 +36,7 @@ function print_info_req(req) {
 function OK(res,data){
     res.statusCode = 200;
     res.statusMessage = "OK";
-    res.setHeader('Content-Type', 'text/plain');
+    //res.setHeader('Content-Type', 'text/plain');
     res.write(data);
     res.end()
     console.log("   200 OK")
