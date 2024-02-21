@@ -34,9 +34,36 @@
             padding: 1em;
         }
         
+        button{
+            border-radius: 8px;
+            margin-top: 0.5vh;
+            margin-right: 1vw;
+            font-size: 550;
+            border: 1px solid yellow;
+            color: yellow;
+            background-color: black;
+            box-shadow: 0px 2px 2px rgba(62, 62, 62, 0.2),
+                        0px -2px 2px rgba(62, 62, 62, 0.2),
+                        2px 0px 2px rgba(62, 62, 62, 0.2),
+                        -2px 0px 2px rgba(62, 62, 62, 0.2);
+            transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3 ease;
+        }
+        button:hover{
+            box-shadow:0px 3px 3px rgba(0, 0, 0, 0.2),
+                        0px -3px 3px rgba(0, 0, 0, 0.3),
+                        3px 0px 3px rgba(0, 0, 0, 0.3),
+                        -3px 0px 3px rgba(0, 0, 0, 0.3);
+            color: red;
+            background-color: black;
+        }
     </style>
 </head>
 <body>
-    
+    <h1 id="logo1">VRshop</h1>
+    <div class="error">
+        <h1>Error 404</h1>
+        <h1>File not Found :(</h1>
+        <button onclick="location.href='/';">Click here to go to the main page</button>
+    </div>
 </body>
 </html>
