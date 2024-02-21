@@ -50,7 +50,7 @@ function NOT_OK(res){
   res.statusCode = 404;
   res.statusMessage = "Not Found";
   res.setHeader('Content-Type', 'text/html');
-  fs.readFile('/principal/error.html', (err,data) => { if(!err){   //Con este codigo cargamos el fichero html de error creado.
+  fs.readFile('error.html', (err,data) => { if(!err){   //Con este codigo cargamos el fichero html de error creado.
     res.write(data);
     res.end()
     console.log("  ERROR 404 NOT FOUND...")
