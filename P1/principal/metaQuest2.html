@@ -9,6 +9,59 @@
     <script type="text/javascript" src="/codigos/second_page.js"></script>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <header class="opacidad_1">
+        <h1 id="logo1" onclick="location.href='/';">VRshop</h1>
+        <h2 id="eslogan" onclick="location.href='/';">Vive la vida en realidad aumentada</h2>
+        <div class="header_Menu">
+            <button class="menu_boton" onclick="location.href='/';">Inicio</button>
+            <button class="menu_boton" onclick="location.href='/otros.html';">Otros</button>
+        </div>
+    </header>
+
+    <div class="cuerpo_principal">
+        <div class="firstView">
+            <div class="foto_div">
+                <img class="pic_producto" id="pic_producto" src="/imagenes/Meta_Quest_1.webp">
+                <div class="foto_blur"></div>
+                <div class="control_pic">
+                    <button class="foto_boton" id="fotoBotonrev"> < </button>
+                    <p class="producTexto" id="ppt0">.</p>
+                    <p class="producTexto" id="ppt1">.</p>
+                    <p class="producTexto" id="ppt2">.</p>
+                    <button class="foto_boton" id="fotoBotonNext"> > </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="datos_1">
+        <p class="tituloDatos">Meta Quest</p>
+        <p class="DatosInto">Bienvenidos a la era de la computación espacial. Apple Vision Pro combina a la perfección el contenido digital con tu espacio físico. Navegas simplemente usando tus ojos, manos y voz.</p>
+        <p class="DatosInto">Solo disponible en Estados Unidos de momento.</p>
+        <p class="DatosInto">Desde 3499$ o por tan solo 291.58$/mes hasta 12 meses.</p>
+        <button class="ButtonCompra" onclick="location.href='/comprar';">Añadir al carrito</button>
+    </div>
+
+    <div class="datos_2">
+        <p class="especTitulo">Datos Técnicos</p>
+        <ul class="especLista">
+            <li class="espec">Pantalla: MicroLED curvo 3D con 25 millones de píxeles Campo de vision de 360º Dolby Vision HDR10.</li>
+            <li class="espec">Procesador: Apple M2: CPU de 8 núcleos y GPU de 10 núcleos y Apple R1: controlador de latencia a 12 milisegundos.</li>
+            <li class="espec">Memorias integradas: 16 GB.</li>
+            <li class="espec">Almacenamiento: 256 GB, 512 GB o 1 TB.</li>
+            <li class="espec">Cámaras: Sistema de 12 cámaras y 5 sensores LiDAR. Captura de fotos y vídeos espaciales. 18 mm de apertura.</li>
+            <li class="espec">Sensores biométricos: Autenticación biométrica basa en iris (Optic ID).</li>
+            <li class="espec">Audio: Audio espacial con seguimiento dinámico de la cabeza. Soporte de baja latencia con AirPods Pro (2ª gen.). AAC, MP3, FLAC, Dolby Digital, Dolby Digital Plus y Dolby Atmos.</li>
+            <li class="espec">Batería: 2 horas con fuente de alimentación externa.</li>
+            <li class="espec">Conectividad: Wi-Fi 6 y Bluetooth 5.3.</li>
+            <li class="espec">Sistema de manejo: Ojos, manos voz, teclado, controladores de juegos, ratones y trackpads.</li>
+            <li class="espec">Software: VisionOS</li>
+        </ul>
+    </div>
+    <footer>
+        <h2>Contacto</h2>
+        <p>email: VRsghop@gmail.com</p>
+        <p>telefono:  +34 123456789</p>
+    </footer>
 </body>
 </html>
