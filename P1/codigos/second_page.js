@@ -24,5 +24,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
         index = file[file.length - 1].split(".")[0]
     }
 
-    var next = document.getElementById("")
-})
+
+    var prev = document.getElementById("fotoBotonPrev");
+    var next = document.getElementById("fotoBotonNext");
+
+    var ppt0 = document.getElementById("ppt0");
+    var ppt1 = document.getElementById("ppt1");
+    var ppt2 = document.getElementById("ppt2");
+
+    prev.onclick = function() {
+        ppt0.style.textShadow = "none"
+        ppt1.style.textShadow = "none"
+        ppt2.style.textShadow = "none"
+        pasFoto(-1)
+    };
+    next.onclick = function() {
+        ppt0.style.textShadow = "none"
+        ppt1.style.textShadow = "none"
+        ppt2.style.textShadow = "none"
+        pasFoto(1)
+    };
+});
