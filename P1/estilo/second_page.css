@@ -214,6 +214,60 @@ box-sizing: content-box;
               -2px 0px 2px rgba(62, 62, 62, 0.2);
 }
 
+.datos_1 .tituloDatos{
+  font-size: 200%;
+  font-weight: 500;
+}
+
+.datos_1 .DatosInto{
+  font-weight: 300;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 90%;
+  margin-top: -4vh;
+  margin-bottom: 8vh;
+}
+
+.datos_1 .ButtonCompra{
+  margin-right: -60%;
+  font-size: 100%;
+  font-weight: 600;
+  text-align: left;
+  border: none;
+  border-radius: 20px;
+  color: #fafafa;
+
+  --bg-size: 400%;
+  --color-one: #d400ff;
+  --color-two: #193cff;
+  background: linear-gradient(
+                90deg,
+                var(--color-one),
+                var(--color-two),
+                var(--color-one)
+              ) 0 0 / var(--bg-size) 100%;
+  animation: move-bg 10s infinite linear;
+  box-shadow: 0px 2px 2px rgba(62, 62, 62, 0.2),
+              0px -2px 2px rgba(62, 62, 62, 0.2),
+              2px  0px 2px rgba(62, 62, 62, 0.2),
+              -2px 0px 2px rgba(62, 62, 62, 0.2);
+
+  transition: box-shadow 0.15s ease, font-size 0.15s ease
+}
+
+.datos_1 .ButtonCompra:hover{
+  font-size: 110%;
+  box-shadow: 0px 8px 8px rgba(62, 62, 62, 0.2),
+              0px -8px 8px rgba(62, 62, 62, 0.2),
+              8px  0px 8px rgba(62, 62, 62, 0.2),
+              -8px 0px 8px rgba(62, 62, 62, 0.2)
+}
+
+.datos_1 .ButtonCompra:active{
+  font-size: 105%;
+  box-shadow: none;
+}
+
 footer{
 display: block;
 min-width: 100%;
