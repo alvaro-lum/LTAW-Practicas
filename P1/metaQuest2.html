@@ -9,88 +9,105 @@
     <script type="text/javascript" src="codigos/second_page.js"></script>
 </head>
 <style>
-    body{
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color: white;
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color:  rgb(214, 178, 178);
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
 }
 header{
-position: fixed;
-z-index: 5;
-top: 0;
-left: 0;
-overflow: hidden;
-width: 100%;
-box-sizing: border-box;
-color: #fafafa;
-background-color: #111111;
-
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  color: #eb0909;
+  background-color: #e2a90d;
+  
 }
 .header_Menu{
-width: 100%;
-height: 3vh;
-text-align: center;
-border-bottom: 1px solid #363636;
-border-top: 1px solid #363636;
-background-color: #000000;
+  width: 100%;
+  height: 3vh;
+  text-align: center;
+  border-bottom: 1px solid #1173e4;
+  border-top: 1px solid #1173e4;
+  background-color: #1173e4;
+}
+
+.logo0 {
+  width: 45px; /* Tamaño del logo */
+  height: auto; /* Altura automática para mantener la proporción */
+  margin-right: 10px; /* Espacio entre el logo y el texto */
+  vertical-align: middle; /* Alinear verticalmente con el texto */
 }
 
 .menu_boton{
-border-radius: 8px;
-margin-top: 0.5vh;
-margin-right: 1vw;
-font-size: 0.80vw;
-font-weight: 550;
-width: 8vw;
-border: none;
-color: #fafafa;
-background-color: #000000;
-box-shadow: 0px 2px 2px rgba(62, 62, 62, 0.2),
-            0px -2px 2px rgba(62, 62, 62, 0.2),
-            2px  0px 2px rgba(62, 62, 62, 0.2),
-            -2px 0px 2px rgba(62, 62, 62, 0.2);
-            
-transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease
+  border-radius: 8px;
+  margin-top: 0.5vh;
+  margin-right: 1vw;
+  font-size: 0.80vw;
+  font-weight: 550;
+  width: 8vw;
+  border: none;
+  color: #fafafa;
+  background-color: #1b0594;
+  box-shadow: 0px 2px 2px rgba(62, 62, 62, 0.2),
+              0px -2px 2px rgba(62, 62, 62, 0.2),
+              2px  0px 2px rgba(62, 62, 62, 0.2),
+              -2px 0px 2px rgba(62, 62, 62, 0.2);
+              
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease
 }
 .menu_boton:hover{
-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2),
-            0px -3px 3px rgba(0, 0, 0, 0.3),
-            3px  0px 3px rgba(0, 0, 0, 0.3),
-            -3px 0px 3px rgba(0, 0, 0, 0.3);
-color: #fafafa;
-background-color: #363636;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2),
+              0px -3px 3px rgba(0, 0, 0, 0.3),
+              3px  0px 3px rgba(0, 0, 0, 0.3),
+              -3px 0px 3px rgba(0, 0, 0, 0.3);
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .menu_boton:active{
-box-shadow: none;
-color: #ffffff;
-background-color: #161616;
+  box-shadow: none;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 #logo1{
-text-align: left;
-margin-left: 6vw;
-margin-top: 0.5vh;
-font-size: 3vh;
-color: #ffffff;
+  text-align: left;
+  margin-left: 2vw;
+  margin-top: 0.5vh;
+  font-size: 3vh;
+  color: #000000;
+  text-shadow: 
+    -1px -1px 0 #fcfbfb,  
+     1px -1px 0 #ffffff,
+    -1px  1px 0 #ffffff,
+     1px  1px 0 #ffffff;
 }
 
 #eslogan{
-text-align: left;
-margin-left: 6.2vw;
-margin-top: -2.6vh;
-font-size: 1.2vh;
-color: #ffffff;
+  text-align: left;
+  margin-left: 5.2vw;
+  margin-top: -2.6vh;
+  font-size: 1.2vh;
+  color: #ffffff;
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 
 .Cuerpo_Principal{
@@ -115,7 +132,7 @@ box-sizing: content-box;
   margin-bottom: 20px;
   position: relative;
   margin: auto;
-  margin-top: 10.5vh; /* Ajusta el margen superior para separar del encabezado */
+  margin-top: 11vh; /* Ajusta el margen superior para separar del encabezado */
   width: 10vw;
   height: 45vh;
   border-radius: 24px;
@@ -175,12 +192,14 @@ box-sizing: content-box;
   margin-top: -5.5%;
 }
 
-#ppt0{
+#ppt0, #ppt1, #ppt2 {
   text-shadow: 
-  0.75px 0.75px 0 #1b1b1b, 
-  -0.5px -0.75px 0 #1b1b1b, 
-  0.75px -0.75px 0 #1b1b1b, 
-  -0.75px 0.75px 0 #1b1b1b;
+    0.75px 0.75px 0 #1b1b1b, 
+    -0.5px -0.75px 0 #1b1b1b, 
+    0.75px -0.75px 0 #1b1b1b, 
+    -0.75px 0.75px 0 #1b1b1b;
+  font-family: 'Times New Roman', Times, serif, sans-serif; /* Cambia el tipo de letra aquí */
+  display: inline-block; /* Hacer que los elementos sean bloques en línea */
 }
 
 .foto_div .control_pic .foto_boton{
@@ -271,7 +290,7 @@ box-sizing: content-box;
               -2px 0px 2px rgba(62, 62, 62, 0.2);
 
   transition: box-shadow 0.15s ease, font-size 0.15s ease;
-  margin-top: 10px; /* Separación del borde inferior del cuadro */
+  margin-top: 30px; /* Separación del borde inferior del cuadro */
 }
 
 .datos_1 .ButtonCompra:hover{
@@ -308,6 +327,11 @@ box-sizing: content-box;
   border: 1px solid #000000; /* Agregar borde */
   display: inline-block; /* Hacer que la caja se ajuste al contenido */
   padding: 10px; /* Agregar relleno para separar el texto del borde */
+  border-radius: 10px;
+  box-shadow: 0px 2px 2px rgba(62, 62, 62, 0.2),
+              0px -2px 2px rgba(62, 62, 62, 0.2),
+              2px  0px 2px rgba(62, 62, 62, 0.2),
+              -2px 0px 2px rgba(62, 62, 62, 0.2);
 }
 
 
@@ -335,9 +359,25 @@ overflow: hidden;
 width: 100%;
 box-sizing: border-box;
 color: #fafafa;
-background-color: #111111;
+background-color: #1173e4;
 text-align: center;
 
+}
+footer button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fafafa;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+footer button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Establecer el ancho del scrollbar */
@@ -356,7 +396,7 @@ background-color: #000000;
 </style>
 <body>
     <header>
-        <h1 id="logo1" onclick="location.href='/';">VRshop</h1>
+        <h1 id="logo1" onclick="location.href='/';"><img class= "logo0" src="imagenes/vr.png">VRshop</h1>
         <h2 id="eslogan" onclick="location.href='/';">Vive la vida en realidad aumentada</h2>
         <div class="header_Menu">
             <button class="menu_boton" onclick="location.href='/';">Inicio</button>
@@ -374,11 +414,11 @@ background-color: #000000;
                 <img class="pic_producto" id="pic_producto" src="imagenes/mv_meta_0_0.png">
                 <div class="foto_blur"></div>
                 <div class="control_pic">
-                    <button class="foto_boton" id="fotoBotonPrev"> < </button>
-                    <p class="producTexto" id="ppt0">.</p>
-                    <p class="producTexto" id="ppt1">.</p>
-                    <p class="producTexto" id="ppt2">.</p>
-                    <button class="foto_boton" id="fotoBotonNext"> > </button>
+                    <button class="foto_boton" id="fotoBotonPrev"> <-- </button>
+                    <p class="producTexto" id="ppt0">1</p>
+                    <p class="producTexto" id="ppt1">2</p>
+                    <p class="producTexto" id="ppt2">3</p>
+                    <button class="foto_boton" id="fotoBotonNext"> --> </button>
                 </div>
             </div>
         </div>
@@ -408,6 +448,7 @@ background-color: #000000;
         </ul>
     </div>
     <footer>
+        <button onclick="scrollToTop()">Volver arriba</button>
         <h2>Contacto</h2>
         <p>email: VRshop@gmail.com</p>
         <p>telefono:  +34 123456789</p>
