@@ -86,24 +86,27 @@ color: #ffffff;
 margin: auto;
 margin-top: 10vh;
 font-size: 4vh;
-width: 100%;
-min-height: 65vh;
+width: 50%;
+min-height: 25vh;
 text-align: center;
 color: #3b3b3b;
 background-color: #fafafa;
 box-sizing: content-box;
 }
-.firstView{
+.firstView {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap; 
+  justify-content: space-around; 
 }
 
-.foto_div{
+.foto_div {
+  flex: 0 1 30%; 
+  margin-bottom: 20px;
   position: relative;
   margin: auto;
-  margin-top: 4vh;
-  width: 25vw;
-  height: 75vh;
+  margin-top: 10.5vh; /* Ajusta el margen superior para separar del encabezado */
+  width: 10vw;
+  height: 45vh;
   border-radius: 24px;
   background-color: #fafafa;
   z-index: 0;
@@ -202,12 +205,18 @@ box-sizing: content-box;
 }
 
 .datos_1{
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  margin-bottom: 10px;
   margin: auto;
   margin-top: 4vh;
-  width: 60vw;
-  height: 75vh;
+  width: 30vw;
+  padding-bottom: 0%;
+  height: 30vh;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0px 2px 2px rgba(62, 62, 62, 0.2),
               0px -2px 2px rgba(62, 62, 62, 0.2),
               2px  0px 2px rgba(62, 62, 62, 0.2),
@@ -219,20 +228,18 @@ box-sizing: content-box;
   font-weight: 500;
 }
 
-.datos_1 .DatosInto{
+.datos_1 .DatosInto {
   font-weight: 300;
   margin-left: 10%;
   margin-right: 10%;
   font-size: 90%;
   margin-top: -4vh;
-  margin-bottom: 8vh;
+  margin-bottom: 4vh; /* Ajusta el margen inferior del texto */
 }
 
-.datos_1 .ButtonCompra{
-  margin-right: -60%;
+.datos_1 .ButtonCompra {
   font-size: 100%;
   font-weight: 600;
-  text-align: left;
   border: none;
   border-radius: 20px;
   color: #fafafa;
@@ -252,7 +259,8 @@ box-sizing: content-box;
               2px  0px 2px rgba(62, 62, 62, 0.2),
               -2px 0px 2px rgba(62, 62, 62, 0.2);
 
-  transition: box-shadow 0.15s ease, font-size 0.15s ease
+  transition: box-shadow 0.15s ease, font-size 0.15s ease;
+  margin-top: 10px; /* Separación del borde inferior del cuadro */
 }
 
 .datos_1 .ButtonCompra:hover{
@@ -260,7 +268,7 @@ box-sizing: content-box;
   box-shadow: 0px 8px 8px rgba(62, 62, 62, 0.2),
               0px -8px 8px rgba(62, 62, 62, 0.2),
               8px  0px 8px rgba(62, 62, 62, 0.2),
-              -8px 0px 8px rgba(62, 62, 62, 0.2)
+              -8px 0px 8px rgba(62, 62, 62, 0.2);
 }
 
 .datos_1 .ButtonCompra:active{
@@ -279,26 +287,34 @@ box-sizing: content-box;
   }
 }
 
-.datos_2 .especTitulo{
+.datos_2 .especTitulo {
   font-weight: 300;
   font-size: 150%;
-  text-align: left;
+  text-align: center;
   margin-left: 2vw;
   padding-top: 2vh;
   margin-bottom: -0.5vh;
+  border: 1px solid #000000; /* Agregar borde */
+  display: inline-block; /* Hacer que la caja se ajuste al contenido */
+  padding: 10px; /* Agregar relleno para separar el texto del borde */
 }
 
-.datos_2 .especLista{
+
+.datos_2 .especLista {
   font-weight: 300;
-  font-size: 70%;
+  font-size: 75%;
   text-align: left;
   margin-left: 2vw;
-  margin-bottom: 2vh
+  margin-bottom: 2vh;
+  border: 1px solid #000000; /* Agregar borde */
+  padding: 20px; /* Agregar relleno para separar el texto del borde */
 }
-.datos_2 .espec{
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
+
+.datos_2 .espec {
+  padding-top: 0.2%;
+  padding-bottom: 0.2%;
 }
+
 
 footer{
 display: block;
