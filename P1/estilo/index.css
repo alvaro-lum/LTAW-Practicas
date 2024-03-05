@@ -127,6 +127,19 @@ header{
   }
 }
 
+.ventasTop{
+  margin-top: 12vh;
+  margin-bottom: 5vh;
+}
+
+.producto_selector{
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+}
+
+
 footer{
   display: block;
   min-width: 100%;
