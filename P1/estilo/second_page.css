@@ -278,6 +278,28 @@ box-sizing: content-box;
     }
   }
 }
+
+.datos_2 .especTitulo{
+  font-weight: 300;
+  font-size: 150%;
+  text-align: left;
+  margin-left: 2vw;
+  padding-top: 2vh;
+  margin-bottom: -0.5vh;
+}
+
+.datos_2 .especLista{
+  font-weight: 300;
+  font-size: 70%;
+  text-align: left;
+  margin-left: 2vw;
+  margin-bottom: 2vh
+}
+.datos_2 .espec{
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
+
 footer{
 display: block;
 min-width: 100%;
@@ -293,7 +315,7 @@ text-align: center;
 
 /* Establecer el ancho del scrollbar */
 ::-webkit-scrollbar {
-width: 5px;
+width: 10px;
 }
 
 /* Establecer el color del thumb y del track del scrollbar */
