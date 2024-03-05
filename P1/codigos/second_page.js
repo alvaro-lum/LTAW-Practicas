@@ -44,3 +44,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     };
 });
 
+function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Para un desplazamiento suave
+    });
+  }
+  
+
