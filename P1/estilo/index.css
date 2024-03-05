@@ -190,6 +190,56 @@ header{
   color: #fafafa;
   text-shadow: -0.5px -0.5px 0 rgb(41, 41, 41), 0.5px -0.5px 0 rgb(41, 41, 41), -0.5px 0.5px 0 rgb(41, 41, 41), 0.5px 0.5px 0 rgb(41, 41, 41);
 }
+
+.producto .fotoPro{
+  width: 100%; /* ajusta el ancho de la imagen al 100% del contenedor */
+  height: 100%; 
+  border-radius: 8px;
+  z-index: -5;
+  object-fit: cover;
+}
+
+.producto .ButtonPro{
+  position: absolute;
+  top: 33.5vh; /* ajusta la posición vertical del texto */
+  left: 1.5vw; /* ajusta la posición horizontal del texto */
+  height: 3vh;
+  border: none;
+  border-radius: 8px;
+  font-size: 2vh;
+  margin-left: 10vw;
+  background-color: #4a64f8;
+  color:#fafafa;
+  z-index: 5;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.2), 0 -4px 4px rgba(0,0,0,0.2);
+  transition: top 0.3s ease , height 0.3s ease ,font-size 0.3s ease ,font-weight 0.3s ease;
+}
+
+.producto .ButtonPro:hover{
+  height: 3.5vh;
+  font-size: 2.1vh;
+  font-weight: 600;
+  --bg-size: 400%;
+  --color-one: hsl(272, 100%, 50%);
+  --color-two: hsl(40 95% 55%);
+  background: linear-gradient(
+                90deg,
+                var(--color-one),
+                var(--color-two),
+                var(--color-one)
+              ) 0 0 / var(--bg-size) 100%;
+
+  animation: move-bg 20s infinite linear;
+}
+
+.producto .ButtonPro:active{
+  border: 1px solid #ffffff;
+  color: #fafafa;
+}
+
+.producto:hover .ButtonPro{
+  top: 40.5vh; /* ajusta la posición vertical del texto */
+}
 footer{
   display: block;
   min-width: 100%;
