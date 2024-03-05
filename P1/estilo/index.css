@@ -82,6 +82,17 @@ header{
   color: #ffffff;
 }
 
+.Cuerpo_Principal{
+  margin: auto;
+  margin-top: 10vh;
+  font-size: 4vh;
+  width: 100%;
+  min-height: 65vh;
+  text-align: center;
+  color: #3b3b3b;
+  background-color: #fafafa;
+  box-sizing: content-box;
+}
 
 footer{
   display: block;
