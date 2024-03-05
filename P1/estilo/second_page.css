@@ -115,6 +115,51 @@ box-sizing: content-box;
   transition: box-shadow 0.3s ease, height 0.3s ease;
 }
 
+.foto_div .pic_producto{
+  position: relative;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0 auto;
+  z-index: 0;
+}
+
+.foto_div .foto_blur{
+  position: absolute;
+  margin: auto;
+  width: 80%;
+  height: 5%;
+  border-radius: 20px;
+  top: 90%;
+  left: 10%;
+  z-index: 2;
+  filter: blur(1px); /* Establece el desenfoque del contenido */
+  background-color: rgba(255, 255, 255, 0.425); 
+}
+
+.foto_div .control_pic{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  text-align: center;
+  width: 80%;
+  height: 5%;
+  border-radius: 20px;
+  top: 90%;
+  left: 10%;
+  z-index: 5;
+}
+
+.foto_div .control_pic .producTexto{
+  font-size: 120%;
+  font-weight: 900;
+  color: #ffffff;
+  height: 50%;
+  margin: auto;
+  margin-top: -5.5%;
+}
 .Texto_pro{
 font-size: 10vh;
 margin-left: 5vw;
