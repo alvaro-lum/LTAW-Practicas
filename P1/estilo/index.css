@@ -51,6 +51,36 @@ header{
               
   transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease
 }
+.menu_boton:hover{
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2),
+              0px -3px 3px rgba(0, 0, 0, 0.3),
+              3px  0px 3px rgba(0, 0, 0, 0.3),
+              -3px 0px 3px rgba(0, 0, 0, 0.3);
+  color: #fafafa;
+  background-color: #363636;
+}
+
+.menu_boton:active{
+  box-shadow: none;
+  color: #ffffff;
+  background-color: #161616;
+}
+
+#logo1{
+  text-align: left;
+  margin-left: 6vw;
+  margin-top: 0.5vh;
+  font-size: 3vh;
+  color: #ffffff;
+}
+
+#eslogan{
+  text-align: left;
+  margin-left: 6.2vw;
+  margin-top: -2.6vh;
+  font-size: 1.2vh;
+  color: #ffffff;
+}
 
 
 footer{
