@@ -46,7 +46,6 @@ function print_info_req(req) {
 function OK(res,data){
     res.statusCode = 200;
     res.statusMessage = "OK";
-    res.setHeader('Content-Type', 'text/html');
     res.write(data);
     res.end()
     console.log("   200 OK")
@@ -60,7 +59,7 @@ function NOT_OK(res){
   res.statusCode = 404;
   res.statusMessage = "Not Found";
   res.setHeader('Content-Type', 'text/html');
-  fs.readFile('error.html', (err,data) => { if(!err){   //Con este codigo cargamos el fichero html de error creado.
+  fs.readFile(FRONT_PATH + 'error.html', (err,data) => { if(!err){   //Con este codigo cargamos el fichero html de error creado.
     res.write(data);
     res.end()
     console.log("  ERROR 404 NOT FOUND...")
