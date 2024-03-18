@@ -3,6 +3,7 @@
 //Modules
 const fs = require('fs');
 const http = require('http');
+const { getCookies } = require('undici-types');
 
 const PUERTO = 9090;
 const FRONT_PATH = "principal/"
@@ -66,38 +67,44 @@ function NOT_OK(res){
   }});
 
 }
-
-//Funcion para devolver archivos
-function returnFiles(dir,space){
-    let sendText = ""
-    const archivos = fs.readdirSync(dir);
-    for(let i = 0; i < archivos.length; i++) {
-        if(archivos[i].split(".").length > 1){
-            sendText += "<p> " + space + " " + archivos[i] + "</p>";
-        }else{
-            sendText += "<p> " + space + " " + archivos[i] + "</p>";
-            sendText += returnFiles(dir + "/" + archivos[i], space + "---")
-        }
-    }
-    return sendText
-}
 //-- SERVIDOR: Bucle principal de atención a clientes
 const server = http.createServer((req, res) => {
 
-  //-- Petición recibida
-  //-- Imprimir información de la petición
-  url = print_info_req(req);
+  let url = print_info_req(req);
   if(req.method == "GET"){
-    //Aplicamos la mejora /ls pedida en la practica
-    if(url.pathname != '/ls'){
-        if(url.pathname == '/'){ url.pathname = "index.html"}
-        fs.readFile(url.pathname.slice(1,), (err, data) => {if(!err){OK(res,data)}else{NOT_OK(res)}});
-    }else{
-        OK(res,DIRECTORY)
+    if(url.pathname == '/'){fs.readFile(FRONT_PATH + 'index.html', (err,data) => { if(!err) {
+        cookies = getCookies(req)
+        data = manageMain(data, DATABASE,cookies)
+        OK(res,data)
+    } else{NOT_OK(res)}});
+
+    }else if (url.pathname == '/producto.html'){
+        fs.readFile(FRONT_PATH + '/producto.html', (err,data) => { if(!err){
+          cookies = getCookies(req)
+          data = manageMain(data, DATABASE,cookies)
+          OK(res,data)
+        }else{NOT_OK(res)}});
+    }else if (url.pathname == '/perfil.html'){
+        fs.readFile(FRONT_PATH + '/perfil.html', (err,data) => { if(!err){
+          cookies = getCookies(req)
+          data = manageMain(data, DATABASE,cookies)
+          OK(res,data)
+        }else{NOT_OK(res)}});
+    }else if (url.pathname == '/carro.html'){
+        fs.readFile(FRONT_PATH + '/carro.html', (err,data) => { if(!err){
+          cookies = getCookies(req)
+           manageCart(data,cookies,function(error, data) {
+            if(error) {
+                console.log("Error")
+            } else {
+                OK(res,data)
+            }
+           });
+        }else{NOT_OK(res)}});
     }
+
   }
 });
-
-
+    
 server.listen(PUERTO);
 console.log("Servidor activado. Escuchando en: " + PUERTO);
