@@ -15,26 +15,29 @@ const imagePath = "imagenes/"
 let SEARCHBAR = fs.readFileSync(FRONT_PATH + 'barra_buscadora.html', 'utf-8')
 let FOOTER = fs.readFileSync(FRONT_PATH + 'footer.html', 'utf-8')
 let ORDERTEMPLATE = fs.readFileSync(FRONT_PATH + 'order_template.html', 'utf-8')
+
 //-- Imprimir informacion sobre el mensaje de solicitud
 function print_info_req(req) {
-
-    console.log("");
-    console.log("Mensaje de solicitud");
-    console.log("====================");
-    console.log("Método: " + req.method);
-    console.log("Recurso: " + req.url);
-    console.log("Version: " + req.httpVersion)
-    console.log("Cabeceras: ");
-
-    //-- Recorrer todas las cabeceras disponibles
-    //-- imprimiendo su nombre y su valor
-    for (hname in req.headers)
-      console.log(`  * ${hname}: ${req.headers[hname]}`);
-
-    //-- Construir el objeto url con la url de la solicitud
     const myURL = new URL(req.url, 'http://' + req.headers['host']);
-    console.log("URL completa: " + myURL.href);
-    console.log("  Ruta: " + myURL.pathname);
+
+    if (true){
+        console.log("");
+        console.log("Mensaje de solicitud");
+        console.log("====================");
+        console.log("Método: " + req.method);
+        console.log("Recurso: " + req.url);
+        console.log("Version: " + req.httpVersion)
+        console.log("Cabeceras: ");
+    
+        //-- Recorrer todas las cabeceras disponibles
+        //-- imprimiendo su nombre y su valor
+        for (hname in req.headers)
+          console.log(`  * ${hname}: ${req.headers[hname]}`);
+    
+        //-- Construir el objeto url con la url de la solicitud
+        console.log("URL completa: " + myURL.href);
+        console.log("  Ruta: " + myURL.pathname);
+    }
 
     return myURL
 }
