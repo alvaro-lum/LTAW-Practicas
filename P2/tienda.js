@@ -5,9 +5,16 @@ const fs = require('fs');
 const http = require('http');
 
 const PUERTO = 9090;
+const FRONT_PATH = "principal/"
 const DIRECTORY = returnFiles("./" , "-")
 
+DATABASE = fs.writeFileSync('tienda.json', 'utf-8')
+DATABASE = JSON.parse(DATABASE)
+const imagePath = "imagenes/"
 
+let SEARCHBAR = fs.readFileSync(FRONT_PATH + 'barra_buscadora.html', 'utf-8')
+let FOOTER = fs.readFileSync(FRONT_PATH + 'footer.html', 'utf-8')
+let ORDERTEMPLATE = fs.readFileSync(FRONT_PATH + 'order_template.html', 'utf-8')
 //-- Imprimir informacion sobre el mensaje de solicitud
 function print_info_req(req) {
 
