@@ -78,8 +78,8 @@ const server = http.createServer((req, res) => {
         OK(res,data)
     } else{NOT_OK(res)}});
 
-    }else if (url.pathname == '/producto.html'){
-        fs.readFile(FRONT_PATH + '/producto.html', (err,data) => { if(!err){
+    }else if (url.pathname == '/product.html'){
+        fs.readFile(FRONT_PATH + '/product.html', (err,data) => { if(!err){
           cookies = getCookies(req)
           data = manageMain(data, DATABASE,cookies)
           OK(res,data)
@@ -127,10 +127,60 @@ const server = http.createServer((req, res) => {
             }else{
                 NOT_OK(res)
             }  
-    }
+    }else if (url.pathname == '/buscar_pagina.html'){
+        fs.readFile(FRONT_PATH + '/buscar_pagina.html', (err,data) => { if(!err){
+            let productFind = url.searchParams.get("product");
+            productList = findProduct(productFind)
+            cookies = getCookies(req)
+            data = manageMain(data, productList,cookies)
+            OK(res,data)}else{NOT_OK(res)}});
 
-  }
-});
+    }else if (url.pathname == '/buscar_categoria'){
+        fs.readFile(FRONT_PATH + '/buscar_pagina.html', (err,data) => { if(!err){
+            let productFind = url.searchParams.get("category");
+            productList = findProductByCategory(productFind)
+            cookies = getCookies(req)
+            data = manageMain(data, productList,cookies)
+            OK(res,data)}else{NOT_OK(res)}});
+
+    }else if (url.pathname == '/productos'){
+        let productFind = url.searchParams.get("product");
+        if (productFind != ""){
+            productList = findProduct(productFind)
+        }else{
+            productList = []
+        }
+        OK(res,JSON.stringify(productList))
+
+    }else if (url.pathname == '/serchProduct'){
+        let productFind = url.searchParams.get("product")
+        productList = findProduct(productFind)
+        if (productList.length == 1) {
+            OK(res,JSON.stringify(["product", productList[0][1]]))
+        }else{
+            OK(res,JSON.stringify(["buscar_pagina", productList]))
+        }
+    }else if (url.pathname == "/closeSesion"){
+        cookies = getCookies(req)
+        for (let i = 0; i < DATABASE.clients.length; i++) {
+            if (DATABASE.clients[i].userName == cookies.userName){
+                if(cookies.cart != undefined && cookies.cart != null){DATABASE.clients[i].cart = cookies.cart}else{DATABASE.clients[i].cart = ""}
+                fs.writeFile('tienda.json', JSON.stringify(DATABASE, null,2), (err) =>{
+                    if (err) throw err;
+                    console.log('Updated JSON');
+                });
+                break;
+            }
+        }
+        res.setHeader('Set-Cookie', ["cart= ; expires=Thu, 01 Jan 1970 00:00:00 GMT", "userName= ; expires=Thu, 01 Jan 1970 00:00:00 GMT"] );
+        OK(res,"200 OK")
+
+    }else if (url.pathname == '/ls'){ 
+        OK(res,DIRECTORY)
+
+    }
+    
+    
     
 server.listen(PUERTO);
 console.log("Servidor activado. Escuchando en: " + PUERTO);
