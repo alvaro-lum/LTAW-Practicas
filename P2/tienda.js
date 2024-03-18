@@ -101,6 +101,32 @@ const server = http.createServer((req, res) => {
             }
            });
         }else{NOT_OK(res)}});
+    }else if (url.pathname == '/añadirCarro.html'){
+        let product = url.searchParams.get("cart");
+        cookies = getCookies(req)
+        if(checkIDExists(product)) {
+            if(cookies['cart'] == null || cookies['cart'] == "" ){
+                res.setHeader('Set-Cookie', "cart="+product+"_1");
+                OK(res,"200 OK")
+            }else{
+                cart = cookies['cart'].split(":")
+                cart = convert2Dic(cart,"_")
+                if(cart[product] != null){
+                    cart[product] = String(Number(cart[product]) + 1)
+                }else{
+                    cart[product] = "1";
+                }
+                let cartCookie = ""
+                Object.keys(cart).forEach(function(id){
+                    cartCookie += id + "_" + cart[id] +":"
+                });
+                cartCookie = cartCookie.substring(0, cartCookie.length - 1);
+                res.setHeader('Set-Cookie', ["cart="+cartCookie]);
+                OK(res, "200 OK")
+            }
+            }else{
+                NOT_OK(res)
+            }  
     }
 
   }
