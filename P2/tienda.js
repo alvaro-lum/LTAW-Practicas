@@ -217,7 +217,25 @@ const server = http.createServer((req, res) => {
                 NOT_OK(res)
             }
         });
-    }
+    }else if(url.pathname == '/deleteProductCart') {
+        let id = url.searchParams.get("id");
+        cookies = getCookies(req)
+        cartCookie = cookies['cart'].split(":")
+        cartCookie = convert2Dic(cartCookie,"_")
+        delete cartCookie[id]
+        var updatedCart = '';
+        if (cartCookie.length <=0 || String(cartCookie) == {} ){
+          updatedCart = ''
+          res.setHeader('Set-Cookie', ["cart= ; expires=Thu, 01 Jan 1970 00:00:00 GMT"]);
+        }else{
+          for (var clave in cartCookie) {
+            updatedCart += clave + '_' + cartCookie[clave] + ':';
+          }
+          updatedCart = updatedCart.slice(0, -1);
+          res.setHeader('Set-Cookie',["cart="+updatedCart]);
+        }
+  
+        OK(res,"200 OK")
 
 }
     
