@@ -237,7 +237,40 @@ const server = http.createServer((req, res) => {
   
         OK(res,"200 OK")
 
-}
+    }else if(url.pathname == '/purchase'){
+        req.on('data', (content)=> {
+          content =  JSON.parse(content.toString())
+          cookies = getCookies(req)
+          for (let i = 0; i <  DATABASE.clients.length; i++){
+            if (DATABASE.clients[i].userName == cookies.userName){
+                DATABASE.clients[i].pedidos.push(content)
+                break; 
+            }
+          }
+
+          for (let i = 0; i <  DATABASE.products.length; i++){
+            for (let j = 0; j <  content.products.length; j++){
+              if (DATABASE.products[i].id == content.products[j][0]){
+                DATABASE.products[i].stock = DATABASE.products[i].stock - content.products[j][1]
+                break; 
+              }
+            }
+          }
+
+          fs.writeFile('tienda.json', JSON.stringify(DATABASE, null, 2), (err) => {
+            if (err) throw err;
+            console.log('Updated JSON');
+          });
+          //res.setHeader('Set-Cookie', ["orders=" + cookie , "cart= ; expires=Thu, 01 Jan 1970 00:00:00 GMT"]); //Añadir cookies de pedido, eliminar cookie carrito
+          res.setHeader('Set-Cookie', ["cart= ; expires=Thu, 01 Jan 1970 00:00:00 GMT"]); //Eliminar cookies carrito 
+          
+          OK(res,"OK")
+        });
+      }
+    }
+  });
     
 server.listen(PUERTO);
 console.log("Servidor activado. Escuchando en: " + PUERTO);
+
+
