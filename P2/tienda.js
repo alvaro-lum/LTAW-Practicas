@@ -342,3 +342,26 @@ function manageProductData(data, DATABASE , id ,cookies){
     }
     return data
   }
+  function manageSearchPage(data ,list,cookies){
+
+    data = data.toString()
+    data = data.replace("<!--INSERTSEARCHBAR-->",SEARCHBAR);
+    data = data.replace("<!--INSERTFOOTER-->",FOOTER);
+    if(cookies['userName'] != null){
+      data = data.replace("Log in",cookies['userName']);
+      data = data.replace("login.html", "profile.html");
+    }data = data.replace("<!--INSERTSEARCHBAR-->",SEARCHBAR);
+    data = data.replace("<!--INSERTFOOTER-->",FOOTER);
+  
+    if (list.length == 0){
+      data = data.replace("replaceText" , "Lo sentimos,no tenemos ninguna sugerencia para esta busqueda." + "\n" +
+       "Es probable que no tengamos ese producto :(  <img id='triste' src='imagenes/triste.jpeg'> ")
+    }else{
+      text = "<p>Estos son los productos mas similares a tu busqueda:</p>"
+      for (let i=0; i < list.length; i++) {
+        text += "<button class='suggestionButton' onclick=\"location.href='/product.html?product_id=" + list[i][1]+"';\">"+ list[i][0] +"</button>"
+      }
+      data = data.replace("replaceText" , text)
+    }
+    return data
+  }
