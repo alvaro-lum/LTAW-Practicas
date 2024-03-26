@@ -405,3 +405,65 @@ function manageProductData(data, DATABASE , id ,cookies){
     }
     return data
   }
+
+  async function manageCart(data,cookies , callback){
+    data = data.toString()
+    data = data.replace("<!--INSERTSEARCHBAR-->",SEARCHBAR);
+    data = data.replace("<!--INSERTFOOTER-->",FOOTER);
+    if(cookies['userName'] != null){
+      data = data.replace("Log in",cookies["userName"]);
+      data = data.replace("login.html", "profile.html");
+      if(cookies['cart'] != null && cookies['cart'].length != 0  ){
+        fs.readFile(FRONT_PATH + "cartProduct.html", (err, component) => { 
+          if(!err){
+            component = component.toString()
+            cartCookie = cookies['cart'].split(":")
+            cartCookie = convert2Dic(cartCookie,"_")
+            productsComponents = "<p id='cartTittle'>Lista de productos</p> \n <div id='productDiv' >"
+            totalPrice = 0
+            for (let key in cartCookie) {
+              newComponent = component
+              let id = key
+              let stock = cartCookie[key]
+              let componentData = findProductById(id)
+              newComponent = newComponent.replace("TITTLE",componentData.name);
+              newComponent = newComponent.replace(/REPLACE_ID/g,id);
+              newComponent = newComponent.replace(/PRICEUNIT/g, String(componentData.price));
+              newComponent = newComponent.replace("value='0'", "value='" + stock+"'");
+              newComponent = newComponent.replace("TOTALPRICE", String(Number(stock) * Number(componentData.price)));
+              newComponent = newComponent.replace("replaceMAX", componentData.stock);
+              totalPrice += Number(stock) * Number(componentData.price)
+              productsComponents += newComponent + "\n";
+            }
+            const inputUI = "<div id=inputDataCart > <p class='textUserCart'>Tarjeta de crédito</p> \
+            <input type='number' id='cardClient' class='userDataInput' placeholder='Introduce tu tarjeta de credito para completar el pago'/> \
+            <p class='textUserCart' >Dirección de envio</p> <input id='dirClient' type='text' class='userDataInput' placeholder='Introduce tu direccion para completar el pago'/>\
+            <p id='feedbackText'></p> </div>"
+            productsComponents += " <p id='totalPriceFinal'> Total: " + String(totalPrice) + " € </p>" + inputUI + "</div> " ;
+            data = data.replace("<!--REPLACE_PRODUCTS-->",productsComponents);
+            data = data.replace("REPLACE_TEXT","Realizar pedido");
+            data = data.replace("REPLACE_URL","sendPurchase()");
+            callback(null,data)
+          }else{console.log("error de lectura")}
+        })
+        
+  
+      }else{
+        data = data.replace("<!--REPLACE_PRODUCTS-->", "<p id='cartTittle' style='margin: auto; margin-top: 2%'> No tienes ningun producto en la cesta :( </p>");
+        data = data.replace("extraStyle=''","style='margin: auto; margin-top: 2%'");
+        data = data.replace("REPLACE_TEXT","Volver a la pagina de inicio");
+        data = data.replace("REPLACE_URL","location.href='/';");
+        callback(null,data)
+      }
+      
+    }else{
+      data = data.replace("<!--REPLACE_PRODUCTS-->"," <p id='cartTittle'  style='margin: auto; margin-top: 2%'> Inicia sesión para poder realizar la compra </p>");
+      data = data.replace("extraStyle=''","style='margin: auto; margin-top: 2%'");
+      data = data.replace("REPLACE_URL","location.href='login.html';");
+      data = data.replace("REPLACE_TEXT","Inicia sesion");
+      callback(null,data)
+    }
+    
+  }
+
+  
