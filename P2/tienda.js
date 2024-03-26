@@ -466,4 +466,12 @@ function manageProductData(data, DATABASE , id ,cookies){
     
   }
 
-  
+  function findProduct(search){
+    const filteredArray = []
+     DATABASE.products.map(function(elemento) {
+      if ((elemento.name).toUpperCase().startsWith(search.toUpperCase())) {
+        filteredArray.push([elemento.name ,elemento.id]);
+      }
+    });
+    return filteredArray
+  }
