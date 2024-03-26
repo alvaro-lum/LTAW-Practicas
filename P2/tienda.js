@@ -475,3 +475,15 @@ function manageProductData(data, DATABASE , id ,cookies){
     });
     return filteredArray
   }
+
+  function findProductByCategory(search){
+    const filteredArray = []
+     DATABASE.products.map(function(elemento) {
+      if ((elemento.category).toUpperCase().startsWith(search.toUpperCase())) {
+        filteredArray.push([elemento.name ,elemento.id]);
+      }
+    });
+    return filteredArray
+  }
+
+  
