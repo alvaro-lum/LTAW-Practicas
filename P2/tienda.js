@@ -486,4 +486,25 @@ function manageProductData(data, DATABASE , id ,cookies){
     return filteredArray
   }
 
+  function findProductById(id){
+
+    let element;
+    DATABASE.products.map(function(elemento) {
+      if (elemento['id'] == id) {
+        element = elemento
+      }
+    });
+    return element
+  }
+
+  function findUserByTag(tag){
+
+    let user;
+    DATABASE.clients.map(function(client) {
+      if (client['userName'] == tag) {
+        user = client;
   
+      }
+    });
+    return user
+  }
