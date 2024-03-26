@@ -365,3 +365,43 @@ function manageProductData(data, DATABASE , id ,cookies){
     }
     return data
   }
+
+  function manageProfilePage(data,cookies){
+    data = data.toString()
+    data = data.replace("<!--INSERTSEARCHBAR-->",SEARCHBAR);
+    data = data.replace("<!--INSERTFOOTER-->",FOOTER);
+    if(cookies['userName'] != null){
+      user = findUserByTag(cookies["userName"])
+      data = data.replace("Log in",cookies['userName']);
+      data = data.replace("login.html", "profile.html");
+      data = data.replace("REPLACEIMG",user['image']);
+      data = data.replace("userTag",cookies["userName"]);
+      data = data.replace("userName",user["name"]);
+      data = data.replace("userEmail",user["email"]);
+      if(user.pedidos.length == 0){
+        data = data.replace("<!--REPLACEORDERS-->","<p>No tienes ningun pedido</p>");
+      }else{
+        let components = ""
+        for (let i = 0; i <  user.pedidos.length; i++){
+          components += "<div class='order'> <p class='orderDivText'>Pedido para: "+ user.pedidos[i].data.user + "</p>\
+          <p class='orderDivText3'>Dirección de envio: " +user.pedidos[i].data.dir  +" </p>\
+          <p class='orderDivText3'>Numero de tarjeta: "+ user.pedidos[i].data.card + "</p> <p class='orderDivText3'> Productos comprados: </p>  "
+          let total = 0
+          for (let j = 0; j <  user.pedidos[i].products.length; j++){
+            newOrder = ORDERTEMPLATE
+            let product = findProductById(user.pedidos[i].products[j][0])
+            newOrder = newOrder.replace("TITTLE",product.name);
+            newOrder = newOrder.replace("UNITS",user.pedidos[i].products[j][1]);
+            let price = product.price * Number(user.pedidos[i].products[j][1])
+            newOrder = newOrder.replace("PRICE",price);
+            components += newOrder
+            total +=price
+          }
+          components += "<p class='orderDivText2'>Total: " + total +" €</p>  </div>"
+        }
+        data = data.replace("<!--REPLACEORDERS-->",components);
+      }
+  
+    }
+    return data
+  }
