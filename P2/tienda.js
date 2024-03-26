@@ -554,4 +554,16 @@ function manageProductData(data, DATABASE , id ,cookies){
     return found
   }
 
-  
+  function returnFiles(dir ,space){
+    let sendText = ""
+    const archivos = fs.readdirSync(dir);
+    for (let i = 0; i < archivos.length; i++) {
+      if(archivos[i].split(".").length > 1){
+        sendText += "<p> " + space + " " + archivos[i] + "</p>";
+      }else{
+        sendText += "<p> " + space + " " + archivos[i] + "</p>";
+        sendText += returnFiles(dir + "/" + archivos[i] , space + "---")
+      }
+    }
+    return sendText
+  }
