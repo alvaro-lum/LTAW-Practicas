@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VRshop</title>
+    <link rel="icon"  href="https://cdn-icons-png.flaticon.com/512/3646/3646958.png" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo/login.css">
+    <script type="text/javascript" src="codigos/login.js"></script>
+</head>
+
+<body>
+    
+    <div class="logoDiv">
+        <h1 id="logo1" onclick="location.href='/';"><img class= "logo0" src="imagenes/vr.png">VRshop</h1>
+        <h2 id="eslogan" onclick="location.href='/';">Vive la vida en realidad aumentada.</h2>
+    </div>
+
+    <div class="formularyDiv">
+        <p>Usuario</p>
+        <input type="text" class="textInput" id="userName"/>
+        <p for="password">Contraseña</p>
+        <input type="password" class="textInput" id="password"/>
+        <button id="submitInput" onclick="login()">Iniciar sesión</button>
+    </div>
+
+    <p id="errorTex"></p>
+
+
+</body>
+
+</html>
