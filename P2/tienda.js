@@ -519,4 +519,16 @@ function manageProductData(data, DATABASE , id ,cookies){
     return dict
   }
 
+  function getCookies(req){
+    let cookie = req.headers.cookie
+    if (cookie) {
+      cookie = cookie.replace(/\s/g, "");
+      cookie = cookie.split(";")
+      cookie = convert2Dic(cookie,"=")
+      return cookie
+    }else{
+      return {}
+    }
+  }
+
   
