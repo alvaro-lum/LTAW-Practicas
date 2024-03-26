@@ -544,4 +544,14 @@ function manageProductData(data, DATABASE , id ,cookies){
     return [found,cart]
   }
 
+  function checkIDExists(search){
+    let found = false
+    DATABASE.products.map(function(elemento) {
+      if (elemento.id == search) {
+        found = true
+      }
+    });
+    return found
+  }
+
   
