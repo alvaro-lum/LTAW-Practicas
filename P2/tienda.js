@@ -178,9 +178,48 @@ const server = http.createServer((req, res) => {
     }else if (url.pathname == '/ls'){ 
         OK(res,DIRECTORY)
 
+    }else if(url.pathname == '/getReviews'){
+        let reviews = []
+        for(i = 0; i < DATABASE.clients.length; i++){
+            if (DATABASE.clients[i].review != "" && DATABASE.clients[i].userName != "root"){
+                let reviewObj = {
+                    name: DATABASE.clients[i].name,
+                    coment: DATABASE.clients[i].review,
+                    imagen: DATABASE.clients[i].image
+                }
+                reviewsnpush(reviewObj)
+            }
+        }
+        OK(res,JSON.stringify(reviews))
+    }else{
+        fs.readFile(FRONT_PATH + url.pathname.slice(1,), (err, data) => { if (!err){OK(res,data)}else{
+            NOT_OK(res)}});
     }
     
-    
+}else if(req.pathname == "POST"){
+    if (url.pathname == '/login'){
+        req.on('data', (content)=> {
+            content = (content.toString()).split("&")
+            content = convert2Dic(content,"=")
+            if(content["userName"] != ""){
+                check = checkUser(content['userName'] , content['password'] , DATABASE)
+                if (check[0]){
+                    if (check[1] != "" && check[1] != undefined){
+                        res.setHeader('Set-cookie', ["userName"+content['userName'], "cart=" + check[1] ]);
+                    }else{
+                        res.setHeader('Set-Cookie',["userName="+content['userName']]);
+                    }
+                    OK(res,"")
+                }else{
+                    NOT_OK(res)
+                }
+            }else{
+                NOT_OK(res)
+            }
+        });
+    }
+
+}
     
 server.listen(PUERTO);
 console.log("Servidor activado. Escuchando en: " + PUERTO);
