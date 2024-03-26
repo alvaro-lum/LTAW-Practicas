@@ -508,3 +508,15 @@ function manageProductData(data, DATABASE , id ,cookies){
     });
     return user
   }
+
+  function convert2Dic(params , split){
+
+    const dict = {};
+    for (let i = 0; i < params.length; i++){
+      param = params[i].split(split)
+      dict[param[0]] = param[1];
+    }
+    return dict
+  }
+
+  
