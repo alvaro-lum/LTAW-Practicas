@@ -291,3 +291,54 @@ function manageMain(data, DATABASE , cookies){
   }
   return data
 }
+
+function manageProductData(data, DATABASE , id ,cookies){
+
+    data = data.toString()
+    data = data.replace("<!--INSERTSEARCHBAR-->",SEARCHBAR);
+    data = data.replace("<!--INSERTFOOTER-->",FOOTER);
+    if(cookies['userName'] != null){
+      data = data.replace("Log in",cookies['userName']);
+      data = data.replace("login.html", "profile.html");
+    }
+  
+    for (let i = 0; i < DATABASE.products.length; i++){
+        if (id ==  DATABASE.products[i].id){
+          data = data.replace("placeholderTittle",  DATABASE.products[i].name);
+          data = data.replace("placeholderImage", imagePath + String( DATABASE.products[i].img[0]));
+          data = data.replace("placeholderIntro",  DATABASE.products[i].descripcion);
+  
+          data = data.replace("<!--placeholderWholePrice-->",  DATABASE.products[i].price);
+          data = data.replace("<!--placeholderMonthPrice-->",  (DATABASE.products[i].price/12).toFixed(2));
+  
+          let reservedStock = 0
+  
+          if(cookies['cart'] != null){
+            cartCookie = cookies['cart'].split(":")
+            cartCookie = convert2Dic(cartCookie,"_")
+            for (let key in cartCookie) {
+              if (key ==  DATABASE.products[i].id){
+                  reservedStock = Number(cartCookie[key])
+              }
+            }
+          }
+          let stock = DATABASE.products[i].stock - reservedStock
+  
+          data = data.replace("replaceStock",  stock);
+          if (stock > 0 ){
+            data = data.replace("replaceClass", "'buyButton' onclick='buyButton(REPLACE_ID);'");
+            data = data.replace("REPLACE_ID", id);
+            data = data.replace("replaceButtonText", "Añadir al carrito");
+          }else{
+            data = data.replace("replaceClass", "noStock");
+            data = data.replace("replaceButtonText", "Sin stock");
+          }
+          
+          for (let j = 0; j <  DATABASE.products[i].caracteristics.length; j++){
+            data = data.replace("placeholderESP",  DATABASE.products[i].caracteristics[j]);
+          }
+          break;
+        }
+    }
+    return data
+  }
