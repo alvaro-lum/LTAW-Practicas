@@ -531,4 +531,17 @@ function manageProductData(data, DATABASE , id ,cookies){
     }
   }
 
+  function checkUser(user,password,DATABASE){
+    found = false
+    cart = ""
+    for (let i = 0; i <  DATABASE.clients.length; i++){
+      if(DATABASE.clients[i].userName == user && DATABASE.clients[i].password == password ){
+        found = true;
+        cart = DATABASE.clients[i].cart
+        break;
+      }
+    }
+    return [found,cart]
+  }
+
   
