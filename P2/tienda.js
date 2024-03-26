@@ -84,12 +84,12 @@ const server = http.createServer((req, res) => {
           data = manageMain(data, DATABASE,cookies)
           OK(res,data)
         }else{NOT_OK(res)}});
-    }else if (url.pathname == '/perfil.html'){
-        fs.readFile(FRONT_PATH + '/perfil.html', (err,data) => { if(!err){
+    }else if (url.pathname == '/profile.html'){
+        fs.readFile(FRONT_PATH + '/profile.html', (err,data) => { if(!err){
           cookies = getCookies(req)
-          data = manageMain(data, DATABASE,cookies)
-          OK(res,data)
-        }else{NOT_OK(res)}});
+          data = manageProfilePage(data,cookies)
+        OK(res,data)}else{NOT_OK(res)}});
+
     }else if (url.pathname == '/carro.html'){
         fs.readFile(FRONT_PATH + '/carro.html', (err,data) => { if(!err){
           cookies = getCookies(req)
@@ -101,6 +101,7 @@ const server = http.createServer((req, res) => {
             }
            });
         }else{NOT_OK(res)}});
+
     }else if (url.pathname == '/añadirCarro.html'){
         let product = url.searchParams.get("cart");
         cookies = getCookies(req)
@@ -273,4 +274,20 @@ const server = http.createServer((req, res) => {
 server.listen(PUERTO);
 console.log("Servidor activado. Escuchando en: " + PUERTO);
 
+function manageMain(data, DATABASE , cookies){
+  data = data.toString()
+  data = data.replace("<!--INSERTSEARCHBAR-->",SEARCHBAR);
+  data = data.replace("<!--INSERTFOOTER-->",FOOTER);
+  if(cookies['userName'] != null){
+    data = data.replace("Log in",cookies['userName']);
+    data = data.replace("login.html", "profile.html");
+  }
 
+  for (let i = 0; i <  DATABASE.products.length; i++){
+    data = data.replace("placeholderTittle",  DATABASE.products[i].name);
+    data = data.replace("placeholderSlogan",  DATABASE.products[i].slogan);
+    data = data.replace("placeholderImage", imagePath + String( DATABASE.products[i].img[0]));
+    data = data.replace("placeholderID" , DATABASE.products[i].id )
+  }
+  return data
+}
