@@ -81,7 +81,7 @@ const server = http.createServer((req, res) => {
     }else if (url.pathname == '/product.html'){
         fs.readFile(FRONT_PATH + '/product.html', (err,data) => { if(!err){
           cookies = getCookies(req)
-          data = manageMain(data, DATABASE,cookies)
+          data = manageProductData(data, DATABASE,url.searchParams.get("product_id") ,cookies)
           OK(res,data)
         }else{NOT_OK(res)}});
     }else if (url.pathname == '/profile.html'){
@@ -133,7 +133,7 @@ const server = http.createServer((req, res) => {
             let productFind = url.searchParams.get("product");
             productList = findProduct(productFind)
             cookies = getCookies(req)
-            data = manageMain(data, productList,cookies)
+            data = manageSearchPage(data, productList,cookies)
             OK(res,data)}else{NOT_OK(res)}});
 
     }else if (url.pathname == '/buscar_categoria'){
@@ -141,7 +141,7 @@ const server = http.createServer((req, res) => {
             let productFind = url.searchParams.get("category");
             productList = findProductByCategory(productFind)
             cookies = getCookies(req)
-            data = manageMain(data, productList,cookies)
+            data = manageSearchPage(data, productList,cookies)
             OK(res,data)}else{NOT_OK(res)}});
 
     }else if (url.pathname == '/productos'){
