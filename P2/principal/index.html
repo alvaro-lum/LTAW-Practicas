@@ -6,7 +6,8 @@
     <link rel="icon"  href="https://cdn-icons-png.flaticon.com/512/3646/3646958.png" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo/index.css">
-    <script type="text/javascript" src="/codigos/index.js"></script>
+    <script type="text/javascript" src="codigos/index.js"></script>
+    <script type="text/javascript" src="codigos/searchBar.js"></script>
 </head>
 <style>
 body{
@@ -337,59 +338,53 @@ footer button:hover {
 }
 </style>
 <body>
-    <header>
-        
-        <h1 id="logo1" onclick="location.href='/';"><img class= "logo0" src="imagenes/vr.png">VRshop</h1>
-        <h2 id="eslogan" onclick="location.href='/';">Vive la vida en realidad aumentada.</h2>
-        <div class="header_Menu">
-            <button class="menu_boton" onclick="location.href='/';">Inicio</button>
-            <button class="menu_boton" onclick="location.href='/visionPro.html';">Apple vision pro</button>
-            <button class="menu_boton" onclick="location.href='/HTCvive.html';">HTC vive</button>
-            <button class="menu_boton" onclick="location.href='/metaQuest2.html';">Meta quest 2</button>
-            <button class="menu_boton" onclick="location.href='/playVR.html';">Play Sation VR</button>
-            <button class="menu_boton" onclick="location.href='/otros.html';">Otros</button>
-        </div>
-    </header>
 
     <div class="Cuerpo_Principal">
         <div class="ventasTop">
             <p class="Texto_pro">Todo lo que necesitas.</p>
-            <div class="producto_selector opacidad_2">
+            <div class="producto_selector">
                 <div class="producto">
-                    <p class="Titulopro">Apple Vision Pro</p>
-                    <p class="SubtituloPro">Lo más novedoso</p>
-                    <img class="fotoPro" src="imagenes/mv_apple_0_0.png">
-                    <button class="ButtonPro" onclick="location.href='/visionPro.html';">Saber más</button>
+                    <p class="Titulopro">placeholderTittle</p>
+                    <p class="SubtituloPro">placeholderSlogan</p>
+                    <img class="fotoPro" src="placeholderImage">
+                    <button class="ButtonPro" onclick="location.href='/product.html?product_id=placeholderID';">Saber más</button>
                 </div>
                 <div class="producto">
-                    <p class="Titulopro">HTC Vive</p>
-                    <p class="SubtituloPro">Lo más novedoso</p>
-                    <img class="fotoPro" src="imagenes/mv_htc_0_0.png">
-                    <button class="ButtonPro" onclick="location.href='/HTCvive.html';">Saber más</button>
+                    <p class="Titulopro">placeholderTittle</p>
+                    <p class="SubtituloPro">placeholderSlogan</p>
+                    <img class="fotoPro" src="placeholderImage">
+                    <button class="ButtonPro" onclick="location.href='/product.html?product_id=placeholderID';">Saber más</button>
                 </div>
                 <div class="producto">
-                    <p class="Titulopro">Meta Quest</p>
-                    <p class="SubtituloPro">Lo más novedoso</p>
-                    <img class="fotoPro" src="imagenes/mv_meta_0_0.png">
-                    <button class="ButtonPro" onclick="location.href='/metaQuest2.html';">Saber más</button>
+                    <p class="Titulopro">placeholderTittle</p>
+                    <p class="SubtituloPro">placeholderSlogan</p>
+                    <img class="fotoPro" src="placeholderImage">
+                    <button class="ButtonPro" onclick="location.href='/product.html?product_id=placeholderID';">Saber más</button>
                 </div>
                 <div class="producto">
-                    <p class="Titulopro">Play Station VR 2</p>
-                    <p class="SubtituloPro">Lo más novedoso</p>
-                    <img class="fotoPro" src="imagenes/mv_play_0_0.png">
-                    <button class="ButtonPro" onclick="location.href='/play.html';">Saber más</button>
+                    <p class="Titulopro">placeholderTittle</p>
+                    <p class="SubtituloPro">placeholderSlogan</p>
+                    <img class="fotoPro" src="placeholderImage">
+                    <button class="ButtonPro" onclick="location.href='/product.html?product_id=placeholderID';">Saber más</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <p class="opinionText fade">Opiniones de los clientes</p>
+    <div class="reviewCarrusel fade">
+      <button class="reviewButton" id="reviewButtonPrev"> <-- </button>
+          <div class="review">
+                  <img class="reviewUserImage" src="">
+                  <div class="reviewUser">
+                      <p class="reviewName">Cargando...</p>
+                      <p class="reviewText">Cargando...</p>
+                  </div>
+          </div>
+          <button class="reviewButton" id="reviewButtonNext"> --> </button>
+    </div>
 
 
-    <footer>
-        <button onclick="scrollToTop()">Volver arriba</button>
-        <h2>Contacto</h2>
-        <p>email: VRshop@gmail.com</p>
-        <p>telefono:  +34 123456789</p>
-    </footer>
+
 </body>
 </html>
