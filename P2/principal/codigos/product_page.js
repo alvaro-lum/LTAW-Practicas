@@ -44,3 +44,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
         actPic(-1)
     };
 });
+
+function buyButton(id){
+
+    feedback = document.getElementById("addFeedback");
+    stockNumber = document.getElementById("stockNumber");
+    productButton = document.getElementById("productButton");
+
+    stock = Number(stockNumber.innerHTML) - 1
+    stockNumber.innerHTML = String(stock)
+
+    if(stock <= 0){
+        productButton.classList.replace("buyButton", "noStock");
+        productButton.onclick = null;
+    }
+
+    var m = new XMLHttpRequest();
+    m.open("GET", "/addCart?cart=" + String(id), true);
+    m.setRequestHeader("Content-Type", "application/json");
+    m.onreadystatechange = function(){
+        if(m.readyState==4 && m.status == 200){
+            feedback.innerHTML = "<p id='innerFeedback'>Producto añadido al carrito</p>"
+        }else if (m.readyState==4 && m.status == 404){
+            feedback.innerHTML = "<p id='innerFeedback'>Error añadido al carrito</p>"
+        }
+    };
+    m.send();
+}
