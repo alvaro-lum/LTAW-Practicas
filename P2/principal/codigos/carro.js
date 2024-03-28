@@ -27,3 +27,44 @@ function updateTotal() {
         location.reload();
     }
 }
+
+function sendPurchase() {
+    let purchase = []
+    let user = document.getElementsByClassName('logButton')[0].innerHTML;
+    let ids = document.getElementsByClassName('cartProductId');
+    let stock = document.getElementsByClassName('cartProductInput');
+    let target = document.getElementById('cardClient').value;
+    let direction = document.getElementById('dirClient').value;
+    let feedbackText = document.getElementById('feedbackText');
+
+    if (direction == ""){
+        feedbackText.innerHTML = "Debes introducir una dirección para finalizar el pago"
+    }else if(target == ""){
+        feedbackText.innerHTML = "Debes introducir una targeta de crédito para finalizar el pago"
+    }else{
+        for (let i = 0; i < ids.length; i++){
+            purchase.push([ids[i].getAttribute('productId'), stock[i].value])
+        }
+
+        let purchase_data = {
+            products : purchase,
+            data : {dir:direction, card: target, user:user}
+        }
+
+        var m = new XMLHttpRequest();
+        m.open("POST", "/purchase", true);
+        m.setRequestHeader("Content-Type", 'application/json');
+        m.onreadystatechange = function(){
+            if ( m.readyState==4 && m.status == 200) {
+                body = document.getElementsByClassName('mainBody')[0];
+                body.innerHTML = "<p id='cartTittle' style='margin: auto; margin-top: 2%'> Compra realizada con exito, puedes comprobar el pedido en tu perfil</p>"
+                body.innerHTML += "<button id='cartButton'  style='margin: auto; margin-top: 2%' onclick=\"location.href='/' \" ;>Volver a la pagina de inicio</button>"
+            }else if(m.readyState==4 && m.status == 404) {
+                console.log("Error")
+                errorText.innerHTML = "Email o contraseña incorrectas"
+            }
+        };
+        m.send(JSON.stringify(purchase_data));
+    }
+}
+
