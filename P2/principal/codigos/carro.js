@@ -68,3 +68,16 @@ function sendPurchase() {
     }
 }
 
+function deleteProduct(id){
+    var elemento = document.querySelector('[productid="' + id + '"]');
+    elemento.remove()
+    const m = new XMLHttpRequest();
+    m.open("POST", "/deleteProductCart?id="+id, true);
+    m.onreadystatechange = () => {
+        if (m.readyState==4 && m.status == 200){
+            updateTotal()
+        }
+    }
+    m.send();
+    loadDOMdata()
+}
